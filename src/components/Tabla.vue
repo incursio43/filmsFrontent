@@ -32,7 +32,10 @@
         >
           <td>{{ favorite.Name }}</td>
           <td>{{ favorite.Director }}</td>
-          <td>{{ favorite.Type }}</td>
+          <td v-if="favorite.Type === 'A' " v-bind:style="{backgroundColor:'Green'}">{{ favorite.Type }}</td>
+          <td v-if="favorite.Type === 'B' " v-bind:style="{backgroundColor:'Yellow'}">{{ favorite.Type }}</td>
+          <td v-if="favorite.Type === 'C' " v-bind:style="{backgroundColor:'Orange'}">{{ favorite.Type }}</td>
+          <td v-if="favorite.Type === 'D' " v-bind:style="{backgroundColor:'Red'}">{{ favorite.Type }}</td>
           <td>{{ favorite.Genre }}</td>
           <td>{{ favorite.Year }}</td>
         </tr>
@@ -44,7 +47,10 @@
         >
           <td>{{ filterFavorite.Name }}</td>
           <td>{{ filterFavorite.Director }}</td>
-          <td>{{ filterFavorite.Type }}</td>
+          <td v-if="favorite.Type === 'A' " v-bind:style="{backgroundColor:'Green'}">{{ favorite.Type }}</td>
+          <td v-if="favorite.Type === 'B' " v-bind:style="{backgroundColor:'Yellow'}">{{ favorite.Type }}</td>
+          <td v-if="favorite.Type === 'C' " v-bind:style="{backgroundColor:'Orange'}">{{ favorite.Type }}</td>
+          <td v-if="favorite.Type === 'D' " v-bind:style="{backgroundColor:'Red'}">{{ favorite.Type }}</td>
           <td>{{ filterFavorite.Genre }}</td>
           <td>{{ filterFavorite.Year }}</td>
         </tr>

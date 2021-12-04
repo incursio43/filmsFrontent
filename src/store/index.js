@@ -10,7 +10,8 @@ export default new Vuex.Store({
   state: {
     favorites: [],
     filterFavorites: [],
-    genres: []
+    genres: [],
+    films: []
   },
   mutations: {
     setFavorites (state, data) {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     },
     setGenres (state, data) {
       state.genres = data
+    },
+    setFilms (state, data) {
+      state.films = data
     }
   },
   actions: {
@@ -40,6 +44,12 @@ export default new Vuex.Store({
     getFilterFavorites ({ commit }, filtro) {
       commit('setFilterFavorites', this.state.favorites.filter(favorite => favorite.Genre === filtro))
       console.log(this.state.filterFavorites)
+    },
+    getFilms ({ commit }) {
+      axios.get('http://localhost:3000/films').then((response) => {
+        commit('setFilms', response.data)
+        console.log(this.state.films)
+      })
     }
   },
   modules: {
