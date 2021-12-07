@@ -31,30 +31,48 @@
           Detalle
         </v-btn>
       </router-link>
-      <router-link :to="`/film/${film.ID}`">
+      <router-link :to="`/film/${film.ID}/edit`">
         <v-btn outlined rounded text>
           Editar
         </v-btn>
       </router-link>
-      <router-link :to="`/film/${film.ID}`">
-        <v-btn outlined rounded text>
+        <v-btn outlined rounded text @click="eliminar(film.ID)">
+          Eliminar
+        </v-btn>
+        <v-btn outlined rounded text @click="eliminarFavoritos(film.ID)">
           Eliminar de favoritos
         </v-btn>
-      </router-link>
-      <router-link :to="`/film/${film.ID}`">
-        <v-btn outlined rounded text >
-          Favoritos de favoritos
+        <v-btn outlined rounded text @click="agregarFavoritos(film.ID)">
+          Agregar a favoritos
         </v-btn>
-      </router-link>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Tarjeta',
-  props: ['film']
+  props: ['film'],
+  methods: {
+    ...mapActions(['postFavorites', 'deleteFavorites', 'deleteFilm']),
+    eliminar (ID) {
+      if (confirm('¿Desea eliminar el film?')) {
+        this.deleteFilm(ID)
+      }
+    },
+    agregarFavoritos (ID) {
+      if (confirm('¿Desea agregar el film a favoritos?')) {
+        this.postFavorites(ID)
+      }
+    },
+    eliminarFavoritos (ID) {
+      if (confirm('¿Desea eliminar el film de favoritos?')) {
+        this.deleteFavorites(ID)
+      }
+    }
+  }
 }
 </script>
 

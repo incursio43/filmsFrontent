@@ -20,7 +20,7 @@
             >
               <div>
                 <div class="font-weight-normal">
-                  <strong>Titulo: {{film.Name}}</strong>
+                  <strong>Titulo: {{filmRandom.Name}}</strong>
                 </div>
               </div>
             </v-timeline-item>
@@ -30,7 +30,7 @@
             >
               <div>
                 <div class="font-weight-normal">
-                  <strong>Director: {{film.Director}}</strong>
+                  <strong>Director: {{filmRandom.Director}}</strong>
                 </div>
               </div>
             </v-timeline-item>
@@ -40,7 +40,7 @@
             >
               <div>
                 <div class="font-weight-normal">
-                  <strong>Genre: {{film.IdGenre}}</strong>
+                  <strong>Genre: {{filmRandom.IdGenre}}</strong>
                 </div>
               </div>
             </v-timeline-item>
@@ -50,7 +50,7 @@
             >
               <div>
                 <div class="font-weight-normal">
-                  <strong>Descripción: {{film.Description}}</strong>
+                  <strong>Descripción: {{filmRandom.Description}}</strong>
                 </div>
               </div>
             </v-timeline-item>
@@ -60,7 +60,7 @@
             >
               <div>
                 <div class="font-weight-normal">
-                  <strong>Review: {{film.Review ? film.Review : 'No se encuentra con un review.'}}</strong>
+                  <strong>Review: {{filmRandom.Review ? filmRandom.Review : 'No se encuentra con un review.'}}</strong>
                 </div>
               </div>
             </v-timeline-item>
@@ -70,7 +70,7 @@
             >
               <div>
                 <div class="font-weight-normal">
-                  <strong>Score: {{film.Score ? film.Score : 'No se cuenta con un score.'}}</strong>
+                  <strong>Score: {{filmRandom.Score ? filmRandom.Score : 'No se cuenta con un score.'}}</strong>
                 </div>
               </div>
             </v-timeline-item>
@@ -80,11 +80,11 @@
             >
               <div>
                 <div class="font-weight-normal">
-                  <strong >{{film.Type ? `Type: ${film.Type}` : 'No se cuenta con un type'}}</strong>
-                  <strong v-if="film.Type === '2'">Type: {{film.Type}} - Movie</strong>
-                  <strong v-if="film.Type === '4'">Type: {{film.Type}} - Serie</strong>
-                  <strong v-if="film.Type === '6'">Type: {{film.Type}} - Documental</strong>
-                  <strong v-if="film.Type === '8'">Type: {{film.Type}} - Anime</strong>
+                  <strong >{{filmRandom.Type ? `Type: ${filmRandom.Type}` : 'No se cuenta con un type'}}</strong>
+                  <strong v-if="filmRandom.Type === '2'">Type: {{filmRandom.Type}} - Movie</strong>
+                  <strong v-if="filmRandom.Type === '4'">Type: {{filmRandom.Type}} - Serie</strong>
+                  <strong v-if="filmRandom.Type === '6'">Type: {{filmRandom.Type}} - Documental</strong>
+                  <strong v-if="filmRandom.Type === '8'">Type: {{filmRandom.Type}} - Anime</strong>
                 </div>
               </div>
             </v-timeline-item>
@@ -94,7 +94,7 @@
             >
               <div>
                 <div class="font-weight-normal">
-                  <strong>Year: {{film.Year}}</strong>
+                  <strong>Year: {{filmRandom.Year}}</strong>
                 </div>
               </div>
             </v-timeline-item>
@@ -104,7 +104,7 @@
             >
               <div>
                 <div class="font-weight-normal">
-                  <strong>Favorite: {{film.isFavorite ? 'Esta en favoritos' : 'No esta en favoritos'}}</strong>
+                  <strong>Favorite: {{filmRandom.isFavorite ? 'Esta en favoritos' : 'No esta en favoritos'}}</strong>
                 </div>
               </div>
             </v-timeline-item>
@@ -124,13 +124,13 @@ import { mapActions, mapState } from 'vuex'
 export default {
   name: 'FilmDetail',
   computed: {
-    ...mapState(['film'])
+    ...mapState(['filmRandom'])
   },
   methods: {
-    ...mapActions(['getFilm'])
+    ...mapActions(['getFilmRandom'])
   },
   created () {
-    this.getFilm(this.$route.params.ID)
+    this.getFilmRandom()
   }
 }
 </script>

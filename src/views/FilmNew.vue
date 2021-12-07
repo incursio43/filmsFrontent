@@ -1,5 +1,5 @@
 <template>
-  <v-form v-model="valid">
+  <v-form>
     <v-container>
       <v-row>
         <v-col
@@ -70,6 +70,23 @@ export default {
   methods: {
     ...mapActions(['postFilm', 'getGenre']),
     guardar () {
+      if (this.Name === '') {
+        alert('El campo Name se encuentra vacio')
+        return
+      } else if (this.Director === '') {
+        alert('El campo Director se encuentra vacio')
+        return
+      } else if (this.Type === '') {
+        alert('El campo Type se encuentra vacio')
+        return
+      } else if (this.Genre === '') {
+        alert('El campo Genre se encuentra vacio')
+        return
+      } else if (this.Year === '') {
+        alert('El campo Year se encuentra vacio')
+        return
+      }
+
       const film = { Name: this.Name, Director: this.Director, IdGenre: this.Genre, Description: this.Description, Type: this.Type, Year: this.Year, Review: '', Score: 0 }
       this.postFilm(film)
     },

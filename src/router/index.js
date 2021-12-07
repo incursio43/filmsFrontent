@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import Film from '../views/Film.vue'
 import FilmDetail from '../views/FilmDetail.vue'
 import FilmNew from '../views/FilmNew.vue'
+import FilmEdit from '../views/FilmEdit.vue'
+import FilmRandom from '../views/FilmRandom.vue'
 
 Vue.use(VueRouter)
 
@@ -24,9 +26,19 @@ const routes = [
     component: FilmDetail
   },
   {
+    path: '/film/:ID/edit',
+    name: 'FilmEdit',
+    component: FilmEdit
+  },
+  {
     path: '/film/new',
     name: 'FilmNew',
     component: FilmNew
+  },
+  {
+    path: '/film/random',
+    name: 'FilmRandom',
+    component: FilmRandom
   }
 ]
 
