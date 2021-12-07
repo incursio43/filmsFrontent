@@ -26,7 +26,18 @@
       </div>
 
       <v-spacer></v-spacer>
-
+      <v-btn
+        href="/film"
+        text
+      >
+        <span class="mr-2">Films</span>
+      </v-btn>
+      <v-btn
+        href="/film/new"
+        text
+      >
+        <span class="mr-2">New film</span>
+      </v-btn>
       <v-btn
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
         target="_blank"

@@ -12,10 +12,11 @@
         <v-list-item-title class="text-h5 mb-1">
           Director: {{film.Director}}
         </v-list-item-title>
-        <v-list-item-subtitle v-if="film.Type === 'A'">Type: {{film.Type}} - Películas para todo público</v-list-item-subtitle>
-        <v-list-item-subtitle v-if="film.Type === 'B'">Type: {{film.Type}} - Películas para adolescentes de 12 años en adelante</v-list-item-subtitle>
-        <v-list-item-subtitle v-if="film.Type === 'C'">Type: {{film.Type}} - Películas para adultos de 18 años en adelante</v-list-item-subtitle>
-        <v-list-item-subtitle v-if="film.Type === 'D'">Type: {{film.Type}} - Películas para adultos, con sexo explícito, lenguaje procaz o alto grado de violencia</v-list-item-subtitle>
+        <v-list-item-subtitle v-if="film.Type === '2'">Type: {{film.Type}} - Movie</v-list-item-subtitle>
+        <v-list-item-subtitle v-if="film.Type === '4'">Type: {{film.Type}} - Serie</v-list-item-subtitle>
+        <v-list-item-subtitle v-if="film.Type === '6'">Type: {{film.Type}} - Documental</v-list-item-subtitle>
+        <v-list-item-subtitle v-if="film.Type === '8'">Type: {{film.Type}} - Anime</v-list-item-subtitle>
+        <v-list-item-subtitle>Year: {{film.Year}} </v-list-item-subtitle>
       </v-list-item-content>
 
       <v-list-item-avatar
@@ -24,36 +25,27 @@
         color="grey"
       ></v-list-item-avatar>
     </v-list-item>
-
     <v-card-actions>
-      <v-btn
-        outlined
-        rounded
-        text
-      >
-        Detalle
-      </v-btn>
-      <v-btn
-        outlined
-        rounded
-        text
-      >
-        Editar
-      </v-btn>
-      <v-btn
-        outlined
-        rounded
-        text
-      >
-        Eliminar
-      </v-btn>
-      <v-btn
-        outlined
-        rounded
-        text
-      >
-        Favoritos
-      </v-btn>
+      <router-link :to="`/film/${film.ID}/detail`">
+        <v-btn outlined rounded text>
+          Detalle
+        </v-btn>
+      </router-link>
+      <router-link :to="`/film/${film.ID}`">
+        <v-btn outlined rounded text>
+          Editar
+        </v-btn>
+      </router-link>
+      <router-link :to="`/film/${film.ID}`">
+        <v-btn outlined rounded text>
+          Eliminar de favoritos
+        </v-btn>
+      </router-link>
+      <router-link :to="`/film/${film.ID}`">
+        <v-btn outlined rounded text >
+          Favoritos de favoritos
+        </v-btn>
+      </router-link>
     </v-card-actions>
   </v-card>
 </template>
