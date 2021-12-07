@@ -81,10 +81,10 @@
               <div>
                 <div class="font-weight-normal">
                   <strong >{{film.Type ? `Type: ${film.Type}` : 'No se cuenta con un type'}}</strong>
-                  <strong v-if="film.Type === '2'">Type: {{film.Type}} - Movie</strong>
-                  <strong v-if="film.Type === '4'">Type: {{film.Type}} - Serie</strong>
-                  <strong v-if="film.Type === '6'">Type: {{film.Type}} - Documental</strong>
-                  <strong v-if="film.Type === '8'">Type: {{film.Type}} - Anime</strong>
+                  <strong v-if="film.Type === 'A'">Type: {{film.Type}} - Película para todo público</strong>
+                  <strong v-if="film.Type === 'B'">Type: {{film.Type}} - Película para adolescentes de 12 años en adelante</strong>
+                  <strong v-if="film.Type === 'C'">Type: {{film.Type}} - Película para adultos de 18 años en adelante</strong>
+                  <strong v-if="film.Type === 'D'">Type: {{film.Type}} - Película para adultos, con sexo explícito, lenguaje procaz o alto grado de violencia</strong>
                 </div>
               </div>
             </v-timeline-item>

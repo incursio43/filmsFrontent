@@ -27,18 +27,6 @@
 
       <v-spacer></v-spacer>
       <v-btn
-        href="/"
-        text
-      >
-        <span class="mr-2">Favorites</span>
-      </v-btn>
-      <v-btn
-        href="/film/random"
-        text
-      >
-        <span class="mr-2">Random Film</span>
-      </v-btn>
-      <v-btn
         href="/film"
         text
       >

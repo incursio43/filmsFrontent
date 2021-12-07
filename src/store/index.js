@@ -13,8 +13,7 @@ export default new Vuex.Store({
     genres: [],
     genre: {},
     films: [],
-    film: {},
-    filmRandom: {}
+    film: {}
   },
   mutations: {
     setFavorites (state, data) {
@@ -34,9 +33,6 @@ export default new Vuex.Store({
     },
     setFilm (state, data) {
       state.film = data
-    },
-    setFilmRandom (state, data) {
-      state.filmRandom = data
     }
   },
   actions: {
@@ -82,42 +78,6 @@ export default new Vuex.Store({
         console.log(response)
       }).catch((error) => {
         alert('No se ha podido guardar el film')
-        console.log(error)
-      })
-    },
-    postFavorites ({ commit }, IdFild) {
-      axios.post('http://localhost:3000/favorites', { IdFild: IdFild }).then((response) => {
-        alert(response.data.message)
-        console.log(response)
-      }).catch((error) => {
-        alert('No se ha podido agregar a favoritos el film')
-        console.log(error)
-      })
-    },
-    deleteFavorites ({ commit }, IdFild) {
-      axios.delete(`http://localhost:3000/favorites/${IdFild}`).then((response) => {
-        alert(response.data.message)
-        console.log(response)
-      }).catch((error) => {
-        alert('No se ha podido agregar a favoritos el film')
-        console.log(error)
-      })
-    },
-    deleteFilm ({ commit }, IdFild) {
-      axios.delete(`http://localhost:3000/films/${IdFild}`).then((response) => {
-        alert(response.data.message)
-        console.log(response)
-      }).catch((error) => {
-        alert('No se ha podido eliminar el film')
-        console.log(error)
-      })
-    },
-    getFilmRandom ({ commit }) {
-      axios.get('http://localhost:3000/films').then((response) => {
-        const random = Math.floor(Math.random() * response.data.length)
-        console.log(response.data[random])
-        commit('setFilmRandom', response.data[random])
-      }).catch((error) => {
         console.log(error)
       })
     }
