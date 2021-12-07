@@ -2,8 +2,10 @@
   <div>
     <v-text-field
       v-bind:label="Label"
+      v-bind:hint="text"
       v-model="value"
       v-bind:rules="isRequired ? rules : null"
+      v-bind:disabled="disabled"
       hide-details="auto"
       v-if="type === 'Input'"
       @change="change"
@@ -12,6 +14,7 @@
         :items="itemsTypes"
         v-bind:label="Label"
         v-if="type === 'Select' && Label === 'Type'"
+        v-bind:disabled="disabled"
         v-model="value"
         @change="change"
     ></v-select>
@@ -19,6 +22,8 @@
         :items="genres"
         v-bind:label="Label"
         v-if="type === 'Select' && Label === 'Genre'"
+        value="text"
+        v-bind:disabled="disabled"
         v-model="value"
         @change="change"
     ></v-select>
@@ -29,7 +34,7 @@
 import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Input',
-  props: ['Label', 'isRequired', 'length', 'type'],
+  props: ['Label', 'isRequired', 'length', 'type', 'disabled', 'text'],
   data () {
     return {
       rules: [
@@ -38,7 +43,7 @@ export default {
         value => (value && this.length && value.length <= this.length) || `Max ${this.length} characters`
       ],
       itemsTypes: ['Movie', 'Serie', 'Documental', 'Anime'],
-      value: ''
+      value: this.text ? this.text : ''
     }
   },
   computed: {
