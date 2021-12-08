@@ -2,7 +2,6 @@
   <div>
     <v-text-field
       v-bind:label="Label"
-      v-bind:hint="text"
       v-model="value"
       v-bind:rules="isRequired ? rules : null"
       v-bind:disabled="disabled"
@@ -39,7 +38,7 @@ export default {
     return {
       rules: [
         value => !!value || 'Required.',
-        value => (value && value.length >= 3) || 'Min 4 characters',
+        value => (value && value.trim().length >= 1) || 'Min 1 characters',
         value => (value && this.length && value.length <= this.length) || `Max ${this.length} characters`
       ],
       itemsTypes: ['Movie', 'Serie', 'Documental', 'Anime'],
@@ -61,6 +60,9 @@ export default {
       if (this.Label === 'Description') {
         this.$emit('changeDescription', this.value)
       }
+      if (this.Label === 'Review') {
+        this.$emit('changeReview', this.value)
+      }
       if (this.Label === 'Type') {
         this.$emit('changeType', this.value)
       }
@@ -69,6 +71,9 @@ export default {
       }
       if (this.Label === 'Year') {
         this.$emit('changeYear', this.value)
+      }
+      if (this.Label === 'Score') {
+        this.$emit('changeScore', this.value)
       }
     }
   },

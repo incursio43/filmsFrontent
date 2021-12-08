@@ -47,10 +47,10 @@
         >
           <td>{{ filterFavorite.Name }}</td>
           <td>{{ filterFavorite.Director }}</td>
-          <td v-if="favorite.Type === '2' " v-bind:style="{backgroundColor:'Green'}"> Movie </td>
-          <td v-if="favorite.Type === '4' " v-bind:style="{backgroundColor:'Yellow'}"> Serie </td>
-          <td v-if="favorite.Type === '6' " v-bind:style="{backgroundColor:'Orange'}"> Documental </td>
-          <td v-if="favorite.Type === '8' " v-bind:style="{backgroundColor:'Red'}"> Anime </td>
+          <td v-if="filterFavorite.Type === '2' " v-bind:style="{backgroundColor:'Green'}"> Movie </td>
+          <td v-if="filterFavorite.Type === '4' " v-bind:style="{backgroundColor:'Yellow'}"> Serie </td>
+          <td v-if="filterFavorite.Type === '6' " v-bind:style="{backgroundColor:'Orange'}"> Documental </td>
+          <td v-if="filterFavorite.Type === '8' " v-bind:style="{backgroundColor:'Red'}"> Anime </td>
           <td>{{ filterFavorite.Genre }}</td>
           <td>{{ filterFavorite.Year }}</td>
         </tr>

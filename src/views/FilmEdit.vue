@@ -1,18 +1,18 @@
 <template>
   <v-form>
     <v-container>
-      <v-row>
+      <v-row v-if="show">
         <v-col cols="12" md="4">
-          <Input isRequired="true" type='Input'  Label="ID" :text="film.ID" disabled/>
+          <Input isRequired="true" type='Input'  Label="ID" v-bind:text="this.ID" disabled/>
         </v-col>
         <v-col cols="12" md="4">
-          <Input isRequired="true" type='Input' Label="Name" :text="film.Name" disabled/>
+          <Input isRequired="true" type='Input' Label="Name" v-bind:text="this.Name" disabled/>
         </v-col>
         <v-col cols="12" md="4" >
           <Input isRequired="true" type='Input' Label="Director" :text="this.Director" disabled/>
         </v-col>
         <v-col cols="12" md="4">
-          <Input isRequired="true" type='Input' Label="Description" :text="this.Description" @changeDescription="changeDescription"/>
+          <Input isRequired="true" length=200 type='Input' Label="Description" :text="this.Description" @changeDescription="changeDescription"/>
         </v-col>
         <v-col cols="12" md="4">
           <Input type='Select' Label="Type" :text="this.Type" @changeType="changeType"/>
@@ -21,17 +21,22 @@
           <Input type='Select' Label="Genre" :text="this.Genre" disabled/>
         </v-col>
         <v-col cols="12" md="4">
-          <Input isRequired="true" type='Input' Label="Year" :text="this.Year" @changeYear="changeYear"/>
+          <Input isRequired="true" length=4 type='Input' Label="Year" :text="this.Year" @changeYear="changeYear"/>
         </v-col>
         <v-col cols="12" md="4">
-          <Input isRequired="true" type='Input' Label="Review" :text="this.Review" @changeReview="changeReview"/>
+          <Input isRequired="true" length=500 type='Input' Label="Review" :text="this.Review" @changeReview="changeReview"/>
         </v-col>
         <v-col cols="12" md="4">
-          <Input isRequired="true" type='Input' Label="Score" :text="this.Score" @changeScore="changeScore"/>
+          <Input isRequired="true" type='Input' length=1 Label="Score" :text="this.Score" @changeScore="changeScore"/>
         </v-col>
           <v-btn outlined rounded text v-on:click="guardar">
             Guardar
           </v-btn>
+      </v-row>
+      <v-row>
+        <v-btn outlined rounded text v-on:click="cargar">
+          Cargar Datos
+        </v-btn>
       </v-row>
     </v-container>
   </v-form>
@@ -55,17 +60,47 @@ export default {
       Genre: '',
       Year: '',
       Review: '',
-      Score: ''
+      Score: '',
+      show: false
     }
   },
   computed: {
     ...mapState(['film', 'genre'])
   },
   methods: {
-    ...mapActions(['getFilm', 'getGenre']),
+    ...mapActions(['getFilm', 'getGenre', 'putFilm']),
     guardar () {
-      const film = { ID: this.ID, Name: this.Name, Director: this.Director, IdGenre: this.Genre, Description: this.Description, Type: this.Type, Year: this.Year, Review: this.Score, Score: this.Score }
-      console.log(film)
+      if (this.Type === 'Movie') {
+        this.Type = 2
+      } else if (this.Type === 'Serie') {
+        this.Type = 4
+      } else if (this.Type === 'Documental') {
+        this.Type = 6
+      } else {
+        this.Type = 8
+      }
+      const film = { ID: this.ID, Name: this.Name, Director: this.Director, IdGenre: this.Genre, Description: this.Description, Type: this.Type, Year: this.Year, Review: this.Review, Score: this.Score }
+      this.putFilm(film)
+    },
+    cargar () {
+      this.ID = this.film.ID
+      this.Name = this.film.Name
+      this.Director = this.film.Director
+      this.Description = this.film.Description
+      if (this.film.Type === '2') {
+        this.Type = 'Movie'
+      } else if (this.film.Type === '4') {
+        this.Type = 'Serie'
+      } else if (this.film.Type === '6') {
+        this.Type = 'Documental'
+      } else {
+        this.Type = 'Anime'
+      }
+      this.Genre = this.film.Genre
+      this.Year = this.film.Year
+      this.Review = this.film.Review
+      this.Score = this.film.Score
+      this.show = true
     },
     changeDescription (data) {
       this.Description = data
@@ -93,25 +128,6 @@ export default {
   },
   created () {
     this.getFilm(this.$route.params.ID)
-    console.log(this.film)
-    // this.ID = this.film.ID
-    // this.Name = this.film.Name
-    // this.Director = this.film.Director
-    // this.Description = this.film.Description
-    // if (this.film.Type === '2') {
-    //   this.Type = 'Movie'
-    // } else if (this.film.Type === '4') {
-    //   this.Type = 'Serie'
-    // } else if (this.film.Type === '6') {
-    //   this.Type = 'Documental'
-    // } else {
-    //   this.Type = 'Anime'
-    // }
-    // this.Genre = this.film.Genre
-    // console.log(this.Genre)
-    // this.Year = this.film.Year
-    // this.Review = this.film.Review
-    // this.Score = this.film.Score
   }
 }
 </script>

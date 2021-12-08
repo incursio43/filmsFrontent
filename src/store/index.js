@@ -85,6 +85,16 @@ export default new Vuex.Store({
         console.log(error)
       })
     },
+    putFilm ({ commit }, film) {
+      console.log(film)
+      axios.put(`http://localhost:3000/films/${film.ID}`, film).then((response) => {
+        alert(response.data.message)
+        console.log(response)
+      }).catch((error) => {
+        alert('No se ha podido editar el film')
+        console.log(error)
+      })
+    },
     postFavorites ({ commit }, IdFild) {
       axios.post('http://localhost:3000/favorites', { IdFild: IdFild }).then((response) => {
         alert(response.data.message)

@@ -80,11 +80,11 @@
             >
               <div>
                 <div class="font-weight-normal">
-                  <strong >{{film.Type ? `Type: ${film.Type}` : 'No se cuenta con un type'}}</strong>
-                  <strong v-if="film.Type === '2'">Type: {{film.Type}} - Movie</strong>
-                  <strong v-if="film.Type === '4'">Type: {{film.Type}} - Serie</strong>
-                  <strong v-if="film.Type === '6'">Type: {{film.Type}} - Documental</strong>
-                  <strong v-if="film.Type === '8'">Type: {{film.Type}} - Anime</strong>
+                  <strong >{{!film.Type ? 'No se cuenta con un type' : null}}</strong>
+                  <strong v-if="film.Type === '2'"> Type: {{film.Type}} - Movie</strong>
+                  <strong v-if="film.Type === '4'"> Type: {{film.Type}} - Serie</strong>
+                  <strong v-if="film.Type === '6'"> Type: {{film.Type}} - Documental</strong>
+                  <strong v-if="film.Type === '8'"> Type: {{film.Type}} - Anime</strong>
                 </div>
               </div>
             </v-timeline-item>

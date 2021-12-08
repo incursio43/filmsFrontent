@@ -70,10 +70,10 @@ export default {
   methods: {
     ...mapActions(['postFilm', 'getGenre']),
     guardar () {
-      if (this.Name === '') {
+      if (this.Name.trim() === '') {
         alert('El campo Name se encuentra vacio')
         return
-      } else if (this.Director === '') {
+      } else if (this.Director.trim() === '') {
         alert('El campo Director se encuentra vacio')
         return
       } else if (this.Type === '') {
